@@ -43,10 +43,19 @@ def draw(window, board):
 
             if tile == '.':
                 color = const.TILE_COLOR
+                rect = pygame.Rect(col * const.TILE_WIDTH, row * const.TILE_HEIGHT, const.TILE_WIDTH, const.TILE_HEIGHT)
+                pygame.draw.rect(window, color, rect)
+
             else:
-                color = const.BOARD_TILE_COLOR
-            rect = pygame.Rect(col * const.TILE_WIDTH, row * const.TILE_HEIGHT, const.TILE_WIDTH, const.TILE_HEIGHT)
-            pygame.draw.rect(window, color, rect)
+                color1 = (0, 0, 0)
+                color2 = const.BOARD_TILE_COLOR
+
+                rect1 = pygame.Rect(col * const.TILE_WIDTH, row * const.TILE_HEIGHT, const.TILE_WIDTH,
+                                    const.TILE_HEIGHT)
+                rect2 = pygame.Rect(col * const.TILE_WIDTH + 1, row * const.TILE_HEIGHT + 1, const.TILE_WIDTH - 2,
+                                    const.TILE_HEIGHT - 2)
+                pygame.draw.rect(window, color1, rect1)
+                pygame.draw.rect(window, color2, rect2)
 
 
 if __name__ == '__main__':
