@@ -1,10 +1,13 @@
 import pygame
 import sys
 import constants as const
+import tile
 
 
 def main():
-    make_board(const.BOARD)
+    board = make_board(const.BOARD)
+    print_board(board)
+
     # board = make_board(const.BOARD)
     # window = initialize()
     # game_loop(window, board)
@@ -21,12 +24,28 @@ def make_board(board_file):
         lines = file.readlines()
     lines = [line.strip() for line in lines]
 
-    board = []
+    game_tiles = []
+    ts = []
     for line in lines:
         row = list(line)
-        board.append(row)
 
-    return board
+        ts = []
+        for char in row:
+
+            if char == "T":
+                ts.append(tile.GameTile())
+            else:
+                ts.append(tile.Tile())
+        game_tiles.append(ts)
+
+    return game_tiles
+
+
+def print_board(board):
+    for row in board:
+        for t in row:
+            print(t, end="")
+        print()
 
 
 def game_loop(window, board):
