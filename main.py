@@ -25,7 +25,7 @@ def make_board(board_file):
     lines = [line.strip() for line in lines]
 
     game_tiles = []
-    ts = []
+    tag = 0
     for line in lines:
         row = list(line)
 
@@ -33,7 +33,8 @@ def make_board(board_file):
         for char in row:
 
             if char == "T":
-                ts.append(tile.GameTile())
+                tag += 1
+                ts.append(tile.GameTile(tag))
             else:
                 ts.append(tile.Tile())
         game_tiles.append(ts)
