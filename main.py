@@ -10,6 +10,13 @@ def main():
     print_board(board)
     test_board(board)
     print_board(board)
+    move_piece(3, 0, board, 1)
+    print_board(board)
+    move_piece(2, 0, board, 4)
+    print_board(board)
+    test_board(board)
+    print_board(board)
+
 
     # board = make_board(const.BOARD)
     # window = initialize()
@@ -61,6 +68,12 @@ def test_board(board):
 
 def place_piece(piece, board):
     board[piece.row][piece.col].put_piece(piece)
+
+
+def move_piece(row, col, board, num):
+    piece = board[row][col].remove_piece()
+    piece.move(num)
+    place_piece(piece, board)
 
 
 def game_loop(window, board):

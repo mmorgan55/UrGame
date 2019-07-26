@@ -5,7 +5,10 @@ class PlayerPiece(object):
         self.currentSpot = start
 
         self.row, self.col = self.moves[self.currentSpot]
+        self.last_row = None
+        self.last_col = None
 
     def move(self, num):
+        self.last_row, self.last_col = self.moves[self.currentSpot]
         self.currentSpot += num
         self.row, self.col = self.moves[self.currentSpot]
