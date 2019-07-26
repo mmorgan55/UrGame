@@ -1,8 +1,11 @@
-class PlayerPiece:
-    def __init__(self):
-        self.moveSquares = [10, 7, 4, 1, 2, 5, 8, 11, 13, 14, 16, 19, 18, 15]
-        self.currentSpot = -1
+class PlayerPiece(object):
+    def __init__(self, start):
+        self.moves = [(3, 0), (2, 0), (1, 0), (0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (4, 0), (5, 0), (6, 1), (7, 1),
+                      (7, 0), (6, 0)]
+        self.currentSpot = start
+
+        self.row, self.col = self.moves[self.currentSpot]
 
     def move(self, num):
         self.currentSpot += num
-        return self.moveSquares[self.currentSpot]
+        self.row, self.col = self.moves[self.currentSpot]

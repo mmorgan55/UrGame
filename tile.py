@@ -1,4 +1,3 @@
-import player_piece
 
 
 class Tile:
@@ -10,17 +9,17 @@ class Tile:
         return str(self.rep)
 
 
-class GameTile:
+class GameTile(object):
 
-    def __init__(self, tag):
-        self.rep = 'T'
-        self.tag = tag
+    def __init__(self):
+        self.rep = None
         self.piece = []
 
     def __str__(self):
-        return str(self.rep)
+        self.rep = 'T' if len(self.piece) == 0 else 'P'
+        return self.rep
 
-    def get_piece(self, piece):
+    def put_piece(self, piece):
         self.piece.append(piece)
 
     def remove_piece(self):
