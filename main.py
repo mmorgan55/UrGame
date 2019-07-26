@@ -4,9 +4,10 @@ import constants as const
 
 
 def main():
-    board = make_board(const.BOARD)
-    window = initialize()
-    game_loop(window, board)
+    make_board(const.BOARD)
+    # board = make_board(const.BOARD)
+    # window = initialize()
+    # game_loop(window, board)
 
 
 def initialize():
@@ -19,7 +20,13 @@ def make_board(board_file):
     with open(board_file, 'r') as file:
         lines = file.readlines()
     lines = [line.strip() for line in lines]
-    return lines
+
+    board = []
+    for line in lines:
+        row = list(line)
+        board.append(row)
+
+    return board
 
 
 def game_loop(window, board):
@@ -39,7 +46,6 @@ def game_loop(window, board):
 def draw(window, board):
     for row, tiles in enumerate(board):
         for col, tile in enumerate(tiles):
-            color = None
 
             if tile == '.':
                 color = const.TILE_COLOR
